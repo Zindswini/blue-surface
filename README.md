@@ -1,4 +1,4 @@
-# Starting point
+# blue-surface
 
 [![build-ublue](https://github.com/zindswini/blue-surface/actions/workflows/build.yml/badge.svg)](https://github.com/zindswini/blue-surface/actions/workflows/build.yml)
 
