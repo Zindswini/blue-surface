@@ -4,14 +4,14 @@
 name: blue-surface
 # The native container image to build on top of.
 # Warning: Non-uBlue images might not work properly, due to missing components.
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/kinoite-nvidia
 # What Fedora version to use. Use an explicit version or `latest`.
 # If you use `latest`, you will be automatically updated to the next major
 # Fedora version, assuming the image you're using as your base container
 # builds with the tag (all uBlue images do this).
 fedora-version: 38
 # This description will be visible in the container metadata.
-description: A starting point for further customization of uBlue images. Make your own! https://ublue.it/making-your-own/
+description: An adaptation of ublue for Microsoft Surface devices
 # These scripts will be executed during the container build.
 # Place scripts in the "scripts/" dir and put the corresponding filenames here.
 # Any files that aren't listed here won't be executed automatically, which
@@ -22,7 +22,7 @@ scripts:
   # repos have been imported (so that you can access those repos if necessary).
   pre:
     # Automatically runs script files within "scripts/pre/".
-    - autorun.sh
+    - autorun.sh # <-------- KERNEL REPLACEMENT HAPPENS HERE
     # Manually listed scripts.
     # - example_pre.sh
   # "Post" scripts run at the end of the build process.
@@ -42,6 +42,7 @@ rpm:
   repos:
   # Example (which also demonstrates version number expansion):
   # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
+  - https://pkg.surfacelinux.com/fedora/linux-surface.repo
 
   # These RPMs will be installed from your enabled repositories (Fedora's own
   # repos, extra "repos" you've added, etc). The installation is automatically
@@ -55,7 +56,10 @@ rpm:
     # apps and binaries require it, so it's a good idea to always include it
     # if you ever download or compile any custom software on your machine.
     - libadwaita
-    # Add your own below:
+    # ----- SURFACE SPECIFIC ADDITIONS -----
+    - libwacom-surface # Already included in fedora 
+    - surface-control
+    - surface-dtx-daemon
     # Example:
     # - tilix
   # These RPMs will be removed from the system image. This step happens during
