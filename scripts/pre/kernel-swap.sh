@@ -9,7 +9,7 @@ set -oue pipefail
 # linux-surface installation instructions
 
 # Download dummy kernel
-wget https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm
+#wget https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm
 
 # Run kernel replacement
 sudo rpm-ostree override remove \
@@ -18,7 +18,10 @@ sudo rpm-ostree override remove \
 	kernel-modules \
 	kernel-headers \
 	kernel-devel \
+	kernel-devel-matched \
 	kernel-modules-extra \
+	libwacom \
+	libwacom-data \
 	--install kernel-surface \
 	--install iptsd \
 	--install libwacom-surface \
