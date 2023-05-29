@@ -20,9 +20,12 @@ sudo rpm-ostree override remove \
 	kernel-devel \
 	kernel-devel-matched \
 	kernel-modules-extra \
+	glibc-devel \
 	--install kernel-surface \
 	--install kernel-surface-devel \
 	--install iptsd
+	
+sudo rpm-ostree install glibc-devel # as if this would work
 
 # Install secure boot key
 rpm-ostree install surface-secureboot
