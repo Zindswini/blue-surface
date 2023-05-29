@@ -12,16 +12,17 @@ set -oue pipefail
 wget https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm
 
 # Run kernel replacement
-rpm-ostree override replace ./*.rpm \
-	--remove kernel-core \
-	--remove kernel-modules \
-	--remove kernel-modules-extra \
-        --remove libwacom \
-        --remove libwacom-data \
+sudo rpm-ostree override remove \
+	kernel \
+	kernel-core \
+	kernel-modules \
+	kernel-headers \
+	kernel-devel \
+	kernel-modules-extra \
 	--install kernel-surface \
-	--install iptsd \
-        --install libwacom-surface \
-        --install libwacom-surface-data
+	--install ipstd \
+	--install libwacom-surface \
+	--install libwacom-surface-data
 
 # Install secure boot key
 rpm-ostree install surface-secureboot
