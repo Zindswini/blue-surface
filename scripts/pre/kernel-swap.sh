@@ -20,7 +20,7 @@ sudo rpm-ostree override remove \
 	kernel-devel \
 	kernel-modules-extra \
 	--install kernel-surface \
-	--install ipstd \
+	--install iptsd \
 	--install libwacom-surface \
 	--install libwacom-surface-data
 
