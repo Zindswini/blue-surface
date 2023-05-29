@@ -20,12 +20,9 @@ sudo rpm-ostree override remove \
 	kernel-devel \
 	kernel-devel-matched \
 	kernel-modules-extra \
-	libwacom \
-	libwacom-data \
 	--install kernel-surface \
-	--install iptsd \
-	--install libwacom-surface \
-	--install libwacom-surface-data
+	--install kernel-surface-devel \
+	--install iptsd
 
 # Install secure boot key
 rpm-ostree install surface-secureboot
