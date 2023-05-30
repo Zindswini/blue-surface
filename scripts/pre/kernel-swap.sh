@@ -25,7 +25,7 @@ set -oue pipefail
 #	--install iptsd
 
 sudo rpm-ostree install kernel-surface iptsd
-sudo rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-extra kernel-devel
+sudo rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-extra kernel-devel kernel-devel-matched
 
 # Install secure boot key
 rpm-ostree install surface-secureboot
