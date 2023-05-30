@@ -8,24 +8,28 @@ set -oue pipefail
 # This script swaps the default fedora kernel for the suface kernel, using instructions from the
 # linux-surface installation instructions
 
+cd /tmp
+mkdir surface-linux
+cd surface-linux
+
 # Download dummy kernel
-#wget https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm
+wget https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm
 
 # Run kernel replacement
-#sudo rpm-ostree override remove \
-#	kernel \
-#	kernel-core \
-#	kernel-modules \
-#	#kernel-headers \
-#	kernel-devel \
-#	kernel-devel-matched \
-#	kernel-modules-extra \
-#	--install kernel-surface \
-#	--install kernel-surface-devel \
-#	--install iptsd
+rpm-ostree override replace ./*.rpm \
+           --remove kernel-core \
+           --remove kernel-devel-matched \
+           --remove kernel-modules \
+           --remove kernel-modules-extra \
+           --remove libwacom \
+           --remove libwacom-data \
+           --install kernel-surface \
+           --install iptsd \
+           --install libwacom-surface \
+           --install libwacom-surface-data
 
-sudo rpm-ostree install kernel-surface iptsd
-sudo rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-extra kernel-devel kernel-devel-matched
+#sudo rpm-ostree install kernel-surface iptsd
+#sudo rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-extra kernel-devel kernel-devel-matched
 
 # Install secure boot key
 rpm-ostree install surface-secureboot
