@@ -21,12 +21,8 @@ rpm-ostree override replace ./*.rpm \
            --remove kernel-devel-matched \
            --remove kernel-modules \
            --remove kernel-modules-extra \
-           --remove libwacom \
-           --remove libwacom-data \
            --install kernel-surface \
-           --install iptsd \
-           --install libwacom-surface \
-           --install libwacom-surface-data
+           --install iptsd
 
 #sudo rpm-ostree install kernel-surface iptsd
 #sudo rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-extra kernel-devel kernel-devel-matched
