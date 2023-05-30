@@ -12,17 +12,20 @@ set -oue pipefail
 #wget https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm
 
 # Run kernel replacement
-sudo rpm-ostree override remove \
-	kernel \
-	kernel-core \
-	kernel-modules \
-	#kernel-headers \
-	kernel-devel \
-	kernel-devel-matched \
-	kernel-modules-extra \
-	--install kernel-surface \
-	--install kernel-surface-devel \
-	--install iptsd
+#sudo rpm-ostree override remove \
+#	kernel \
+#	kernel-core \
+#	kernel-modules \
+#	#kernel-headers \
+#	kernel-devel \
+#	kernel-devel-matched \
+#	kernel-modules-extra \
+#	--install kernel-surface \
+#	--install kernel-surface-devel \
+#	--install iptsd
+
+sudo rpm-ostree install kernel-surface iptsd
+sudo rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-extra kernel-devel
 
 # Install secure boot key
 rpm-ostree install surface-secureboot
