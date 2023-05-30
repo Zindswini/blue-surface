@@ -58,7 +58,7 @@ rpm:
     - libadwaita
     # ----- SURFACE SPECIFIC ADDITIONS -----
     - libwacom-surface
-    - libwacom-data-surface
+    - libwacom-surface-data
     - surface-control
     - surface-dtx-daemon
   # These RPMs will be removed from the system image. This step happens during
